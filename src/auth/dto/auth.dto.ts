@@ -16,12 +16,12 @@ export class AuthDto {
   password: string;
 
   @IsString()
+  @IsNotEmpty()
   username: string;
 
   @IsPhoneNumber()
-  phone_number: number;
+  phone_number: string;
 
-  @IsNotEmpty()
   @IsBoolean()
   is_anonymous: boolean;
 

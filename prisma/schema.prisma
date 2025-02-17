@@ -14,12 +14,12 @@ datasource db {
 }
 
 model User {
-  id String @id @default(uuid())
+  id Int @id @default(autoincrement())
   username String
   email String @unique
-  phone_number Int
-  password Int
-  is_anonymous Boolean
+  phone_number String
+  password String
+  is_anonymous Boolean @default(false)
   role String @default("USER")
   articles Article[]
   created_at DateTime @default(now())
@@ -32,7 +32,7 @@ model Article{
   content String
   category String
   author User @relation(fields: [authorId], references: [id])
-  authorId String
+  authorId Int
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt()
 }
