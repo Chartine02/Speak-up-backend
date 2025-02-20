@@ -16,4 +16,11 @@ export class AuthController {
   signup(@Body() dto: AuthDto) {
     return this.authService.signup(dto);
   }
+
+  @Post('signin')
+  @ApiOperation({ summary: 'User signin' })
+  @ApiResponse({ status: 201, description: 'User successfully logged in.' })
+  signin(@Body() dto: AuthDto) {
+    return this.authService.signin(dto);
+  }
 }

@@ -7,7 +7,7 @@ import {
   IsString,
 } from 'class-validator';
 
-export class AuthDto {
+export class UpdateUserDto {
   @ApiProperty({ example: 'user@example.com' })
   @IsEmail()
   @IsNotEmpty()
@@ -34,5 +34,5 @@ export class AuthDto {
   role: string;
 
   @IsNotEmpty()
-  created_at: Date;
+  updated_at: Date;
 }
