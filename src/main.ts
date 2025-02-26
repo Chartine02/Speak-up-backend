@@ -15,7 +15,10 @@ async function bootstrap() {
   SwaggerModule.setup('api', app, documentFactory);
 
   app.enableCors({
-    origin: '*',
+    origin: [
+      'http://localhost:5173',
+      'https://quiet-selkie-a9e7bf.netlify.app/',
+    ],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
     credentials: true,
   });
