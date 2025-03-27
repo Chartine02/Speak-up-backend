@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -14,25 +8,37 @@ datasource db {
 }
 
 model User {
-  id Int @id @default(autoincrement())
-  username String
-  email String @unique
+  username     String
+  email        String        @unique
   phone_number String
-  password String
-  is_anonymous Boolean @default(false)
-  role String @default("USER")
-  articles Article[]
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
+  password     String
+  is_anonymous Boolean       @default(false)
+  role         String        @default("USER")
+  created_at   DateTime      @default(now())
+  updated_at   DateTime      @updatedAt
+  id           Int           @id @default(autoincrement())
+  articles     Article[]
+  testimonials Testimonial[]
 }
 
-model Article{
-  id Int @id @default(autoincrement())
-  title String
-  content String
-  category String
-  author User @relation(fields: [authorId], references: [id])
-  authorId Int
+model Article {
+  id         Int      @id @default(autoincrement())
+  title      String
+  content    String
+  category   String
   created_at DateTime @default(now())
-  updated_at DateTime @updatedAt()
+  updated_at DateTime @updatedAt
+  authorId   Int
+  author     User     @relation(fields: [authorId], references: [id])
+}
+
+model Testimonial {
+  id         Int      @id @default(autoincrement())
+  title      String
+  story      String
+  anonymous  Boolean  @default(false)
+  authorId   Int
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  author     User     @relation(fields: [authorId], references: [id])
 }
