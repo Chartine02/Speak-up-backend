@@ -48,7 +48,10 @@ export class AuthService {
     const pwMatch = argon.verify(user.password, dto.password);
     if (!pwMatch) throw new ForbiddenException('Wrong credentials');
 
-    return this.singinToken(user.id, user.email);
+    return {
+      id: user.id,
+      token: await this.singinToken(user.id, user.email),
+    };
   }
 
   singinToken(userId: number, email: string): Promise<string> {
