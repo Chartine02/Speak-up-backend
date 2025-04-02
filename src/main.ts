@@ -17,7 +17,7 @@ async function bootstrap() {
   app.enableCors({
     origin: [
       'http://localhost:5173',
-      'https://quiet-selkie-a9e7bf.netlify.app/',
+      'https://speak-up-daily.netlify.app/',
     ],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
     credentials: true,
