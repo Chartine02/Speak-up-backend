@@ -15,7 +15,11 @@ async function bootstrap() {
   SwaggerModule.setup('api', app, documentFactory);
 
   app.enableCors({
-    origin: ['http://localhost:5173', 'https://speak-up-daily.netlify.app/'],
+    origin: [
+      'http://localhost:5173',
+      'https://speak-up-daily.netlify.app',
+      'https://speak-up-backend.onrender.com',
+    ],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
     credentials: true,
   });
